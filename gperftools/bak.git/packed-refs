@@ -1,0 +1,104 @@
+# pack-refs with: peeled fully-peeled sorted 
+7495af7b7fed8f6589f1816aad34dd45952c9ff2 refs/remotes/origin/at7_0-release
+b8c4ba72969562d1378002aa03c6097fa6f8cbec refs/remotes/origin/at7_1-release
+99bfb9734fdf2a50c65817abd0fa0ce9257b9a16 refs/remotes/origin/at8_0-release
+bf8b714bf5075d0a6f2f28504b43095e2b1e11c5 refs/remotes/origin/master
+81d99f21ede78ab8d5fec15d0055416ac1b581f3 refs/remotes/origin/master-issue_626
+215da95dd92b0cff2e8f53ba6d6f24719a42cd84 refs/remotes/origin/rzinsly-master
+1e7b733a217b2e92f6188b27951dfaf22ac1e2f3 refs/remotes/origin/wip-from-alk-for-review
+26a94d8ed201f66687f9160055c56f3e0f02ce12 refs/tags/HSD
+605ca38f342de8501c591e65ffc789b40ba2d4da refs/tags/google-perftools-1.10
+ddf6aeeb1079bb802cbbabdbc41c4545245d344f refs/tags/google-perftools-1.5
+2a5016814bf06328e82cc89298814bbf62e39b02 refs/tags/google-perftools-1.7
+8cd38a1e5d1dc225e5110ba5dcb7c6ed4efd03ac refs/tags/google-perftools-1.8
+94b57abb3a9192d11b8d0d969a28b9a6316afa74 refs/tags/google-perftools-1.8.1
+d379e5e79d5f92ae3561d020a0be8b304cf6b88b refs/tags/google-perftools-1.8.2
+0b87a55895a184bcc529b4ce13c46c0411182b85 refs/tags/google-perftools-1.8.3
+d1a7376534fc57446a1128099c87a562b7a5e352 refs/tags/google-perftools-1.9
+b954171923f17c78473d4bf56e2f9bcc3e7b85f2 refs/tags/google-perftools-1.9.1
+31d1a68c459a3b133b7653f10f3fcfa722a9ade1 refs/tags/gperftools-2.0
+db6d94d9893fdd8c74028b5113cd9185be1e3111 refs/tags/gperftools-2.1
+f7828cf91183d5c846b01d90b78638588e574f85 refs/tags/gperftools-2.1.90
+^e8e082af25952e9bd10c37c3f028c91fcbbd1cbd
+3828f3b1178b2c2c6abb73e65667ac7d84e98b84 refs/tags/gperftools-2.10
+^bf8b714bf5075d0a6f2f28504b43095e2b1e11c5
+85043450860dd9c9bd5b6e9d6f5651af5dbeb080 refs/tags/gperftools-2.2
+^846b775dfadb77901202ae7ddbac30ad1de7df01
+0f8dcf709f733756116b5e7bf8304f2751100c93 refs/tags/gperftools-2.2.1
+^2e90b6fd72fec33aedf547d1977bdee6b77645b9
+fdb810ac2d41ed9a8e2dd0ab7eb6b80bbfad15ec refs/tags/gperftools-2.2.90
+^e7d5e512b068fb76f5eeed7985bebd9c0d14e226
+dde4c4233d948088e7301d0e407621d5aba51007 refs/tags/gperftools-2.3
+^463a619408219fff8955d47a71de1aab31ebd129
+815fc24142c8c286b9f48a6116f4b5b4c72bf4e9 refs/tags/gperftools-2.3.90
+^3f5f1bba0c2cb4862c38b0c9050f1cede8a5c344
+6b6ad1e2ec2368fb68ef031ce6028a19ad614e2d refs/tags/gperftools-2.4
+^689e4a5bb4b2a8afecb85e83b8e4f294f80b6124
+a13d375d19a7f409608f1366be42b91948673013 refs/tags/gperftools-2.4.90
+^2804b7cfee8d49d5ab98340cbf3050c0a5f57b98
+3174c3ac64c3173b39a70a53bd237eb66d8596b4 refs/tags/gperftools-2.4.91
+^6ff86ff6a783a277956e45db68c6a2b729f27000
+5c61e9baba611e6821b42aae0cfab9bcda454fee refs/tags/gperftools-2.5
+^632de2975e63f89613af9ab99bc1603a4a6332aa
+044d712d6e91f9c9bacb66ed2c6cd5028e5e9ef0 refs/tags/gperftools-2.5.90
+^b48403a4b065830129e238feffe022abd93af807
+328440f295939cd5c84a05335a1e1a2990b37b8c refs/tags/gperftools-2.5.91
+^50125d8f70007fb2aa4d1c87df6a3092a3371edf
+bf41cba6206ef01e690170b0c2e60c3aab3e5b4e refs/tags/gperftools-2.5.92
+^6426c0cc8049dd50a681dc337ac9962577d5fa14
+9fb631f52fd21af514348e8f0156e2f2f3a0e4b0 refs/tags/gperftools-2.5.93
+^c571ae2fc9433e958f29b3c3525d34c22a9cb884
+eda72ae0169b8cedd3c70f3262163885b6ae76a4 refs/tags/gperftools-2.6
+^4be05e43a1adab9ceea9bdaaae546fb938f0a86c
+8d1b0efba76c5bbf2fc5ecc7d4e6fde6476a8031 refs/tags/gperftools-2.6.1
+^bf840dec0495e17f5c8403e68e10b9d6bf05c559
+4d57b59b643fdeb84c6bcb5618ea7b0350ff0cf6 refs/tags/gperftools-2.6.2
+^6a4b0799975576c2722daa75b35f6f65220d22b6
+f91dd82779833efe21aa26e9ef0120eb375f8efc refs/tags/gperftools-2.6.3
+^71bf09aabe93dbe390ebb54c57d3c5b3d627c142
+4fe12b4dafd99d7dc571318cb026eb9be0549b8c refs/tags/gperftools-2.6.90
+^34f78a2dcd8160b483d86474702785337bbeb7ac
+f485cc48292dd0c65a1b88b799ed6ce8048b00c5 refs/tags/gperftools-2.7
+^9608fa3bcf8020d35f59fbf70cd3cbe4b015b972
+75977206ac60023a1c3939564b8460c5ac821875 refs/tags/gperftools-2.7.90
+^db7aa547abb5abdd558587a15502584cbc825438
+338ec357c2cc2a6025470e3519e8f2985ed8ece9 refs/tags/gperftools-2.8
+^180bfa10d7cb38e8b3784d60943d50e8fcef0dcb
+a43eba60b94b71063230ba9c11985311299d9a6e refs/tags/gperftools-2.8.1
+^d8eb315fb18f6fb0d6efa923401f166343727bc6
+dfd0efeb60be35a819cacb26b417d58ec16367ac refs/tags/gperftools-2.8.90
+^96ba58e19b7b93fcf1db6a0551c9510296ce26da
+267711eb2fb4891bcffee472974146234f0d2e4a refs/tags/gperftools-2.9
+^47b5b59ca9b62ee42cf30273cce463aa9cbba8c7
+2a694ec1a74cb65eb178cdbc2926bcafeea2cb79 refs/tags/gperftools-2.9.1
+^f7c6fb6c8e99d6b1b725e5994373bcd19ffdf8fd
+5997021ef1f9c94db36d7fda9fc302842d548f7f refs/tags/perftools-0.1
+c8b8e9abbfd120f61c4d903c3b233ab5d069ec67 refs/tags/perftools-0.2
+61855222596df5ed71ab806a19fcc29f0c3aeb29 refs/tags/perftools-0.3
+4a2875dc95907337fb3300367e24400201cf5f84 refs/tags/perftools-0.4
+9ffd1b7441d078dda117e30ed0431a192320c10b refs/tags/perftools-0.5
+45c04fca213d86c24845b24119e863f87f010e75 refs/tags/perftools-0.6
+ed06eff79bf8d1b74065e50f9ad61741fe6fd705 refs/tags/perftools-0.7
+441d1d54f753a6cc3c5183f08f0ffa66e33d9e38 refs/tags/perftools-0.8
+eaaadd50b97c03570336d94e33e87e814ed3ee90 refs/tags/perftools-0.90
+32050efb9d8355cbc6d6e7549e1c80f8085f1604 refs/tags/perftools-0.91
+02b6ac096d5f0b83f1f9439745f9286209da169e refs/tags/perftools-0.92
+1977200575f3f30ad1af4d48a07fa4497434878e refs/tags/perftools-0.93
+5604066fe00037d8c41e18c11b60454833454aa0 refs/tags/perftools-0.94
+c7e271de1ff26d77c0beea195fe3158e565ed6b3 refs/tags/perftools-0.94.1
+cf20046e74c15120a63e9352dbc5168f64d1d1e5 refs/tags/perftools-0.95
+3352d138481a9c7b3cddff0e31c5184b2ed555c8 refs/tags/perftools-0.95.1
+6f4cb399e4aad4023a33f61785acc1b73767426d refs/tags/perftools-0.96
+9e5889083d1b76fdd563c6b507e68bf778907bb9 refs/tags/perftools-0.97
+601fec4c40b4adae874a9123042fcd7e037f45b6 refs/tags/perftools-0.98
+116ce9c2248eaec19f33585623172a0dcfe84979 refs/tags/perftools-0.99
+42c4085a7b17e2d75180853896271645e7874461 refs/tags/perftools-0.99.1
+c002a31c671a182cc3c6148dc42c6005bdfcf6a1 refs/tags/perftools-0.99.2
+2cb96624ced39f15d9aa4cb030f262e85ab1a436 refs/tags/perftools-1.0
+704791e6b4047302ea710a223849d027a9d97264 refs/tags/perftools-1.0rc1
+fa14e9ce58504f131adf97c270a3ec89f182f119 refs/tags/perftools-1.0rc2
+c9fc27e53eea58844e3636622b295ab98392a75f refs/tags/perftools-1.1
+f186388bfae11f711a0378118aaa7d2402cefd16 refs/tags/perftools-1.2
+0088368c21a32bdbd70efb3bb43149e67e61c911 refs/tags/perftools-1.3
+4d70721dcdd5e759c8ad807f7f6cb1ef64a1b6be refs/tags/perftools-1.5
+fd52267cb91a42f839c7be6a348e014cfdbcaca9 refs/tags/perftools-1.6

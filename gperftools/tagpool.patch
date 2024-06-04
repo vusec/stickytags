@@ -1,0 +1,134 @@
+diff --git a/src/base/arm_instruction_set_select.h b/src/base/arm_instruction_set_select.h
+index 77ff670..39d8d53 100644
+--- a/src/base/arm_instruction_set_select.h
++++ b/src/base/arm_instruction_set_select.h
+@@ -38,8 +38,26 @@
+ 
+ #if defined(__ARM_ARCH_8A__)
+ # define ARMV8 1
++// MTE_ENABLED should be defined only in architectures that have Top-Byte Ignore (TBI) feature.
++#define MTE_ENABLED 1
+ #endif
+ 
++#if defined(MTE_ENABLED) && defined(__ARM_FEATURE_MEMORY_TAGGING)
++#if !defined(MTE_HARDWARE) && !defined(MTE_ANALOGUES)
++#error If MTE_ENABLED is set either MTE_HARDWARE or MTE_ANALOGUES!
++#endif
++#endif
++
++/* Experiment controlling:
++ * Control your experiment's parameters here
++ */
++// #undef MTE_ENABLED
++#undef MTE_HARDWARE
++// #undef MTE_ANALOGUES
++#define MTE_ENABLED
++// #define MTE_HARDWARE
++#define MTE_ANALOGUES
++
+ #if defined(ARMV8) || \
+     defined(__ARM_ARCH_7__) || \
+     defined(__ARM_ARCH_7R__) || \
+diff --git a/src/tcmalloc.cc b/src/tcmalloc.cc
+index b9c5408..15fc23c 100644
+--- a/src/tcmalloc.cc
++++ b/src/tcmalloc.cc
+@@ -133,6 +133,11 @@
+ #include "tcmalloc_guard.h"    // for TCMallocGuard
+ #include "thread_cache.h"      // for ThreadCache
+ 
++// TagPool:
++#include "base/mte_def.h"
++#include "base/mte_common_utils.h"
++
++
+ #include "maybe_emergency_malloc.h"
+ 
+ #if (defined(_WIN32) && !defined(__CYGWIN__) && !defined(__CYGWIN32__)) && !defined(WIN32_OVERRIDE_ALLOCATORS)
+diff --git a/src/thread_cache.cc b/src/thread_cache.cc
+index 21d0f8e..b4cf632 100644
+--- a/src/thread_cache.cc
++++ b/src/thread_cache.cc
+@@ -41,6 +41,9 @@
+ #include "getenv_safe.h"                // for TCMallocGetenvSafe
+ #include "central_freelist.h"           // for CentralFreeListPadded
+ #include "maybe_threads.h"
++// TagPool
++#include "base/mte_common_utils.h"
++#include <sys/prctl.h>
+ 
+ using std::min;
+ using std::max;
+@@ -134,6 +137,12 @@ void* ThreadCache::FetchFromCentralCache(uint32 cl, int32_t byte_size,
+   if (--fetch_count >= 0) {
+     size_ += byte_size * fetch_count;
+     list->PushRange(fetch_count, SLL_Next(start), end);
++#ifdef MTE_ENABLED
++    // TagPool
++    fprintf(stderr, "[TagPool] @ FetchFromCC: Pointer %p tagged 0x12 (bytes=%lu)\n", start, byte_size);
++    start = MT_SET_TAG(start, 0x12);
++    mte_set_tag_address_range(start, byte_size);
++#endif
+   }
+ 
+   // Increase max length slowly up to batch_size.  After that,
+@@ -287,6 +296,14 @@ void ThreadCache::InitModule() {
+     if (phinited) {
+       return;
+     }
++#ifdef MTE_ENABLED
++    // TagPool: only enable tagged pointers (for the kernel to understand)
++    fprintf(stderr, "[TagPool] Enabling Tagged Pointers!\n");
++    if (prctl(PR_SET_TAGGED_ADDR_CTRL, PR_TAGGED_ADDR_ENABLE, 0, 0, 0)) {
++        perror("prctl() failed");
++        abort();
++    }
++#endif
+     const char *tcb = TCMallocGetenvSafe("TCMALLOC_MAX_TOTAL_THREAD_CACHE_BYTES");
+     if (tcb) {
+       set_overall_thread_cache_size(strtoll(tcb, NULL, 10));
+diff --git a/src/thread_cache.h b/src/thread_cache.h
+index f8be152..6417279 100644
+--- a/src/thread_cache.h
++++ b/src/thread_cache.h
+@@ -58,6 +58,9 @@
+ #include "sampler.h"           // for Sampler
+ #include "static_vars.h"       // for Static
+ 
++// TagPool:
++#include "base/mte_common_utils.h"
++
+ DECLARE_int64(tcmalloc_sample_parameter);
+ 
+ namespace tcmalloc {
+@@ -380,6 +383,14 @@ inline ATTRIBUTE_ALWAYS_INLINE void* ThreadCache::Allocate(
+     return FetchFromCentralCache(cl, size, oom_handler);
+   }
+   size_ -= size;
++
++#ifdef MTE_ENABLED
++  // TagPool
++  fprintf(stderr, "[TagPool] Pointer %p tagged 0x7 (bytes=%lu)\n", rv, size);
++  rv = MT_SET_TAG(rv, 0x7);
++  mte_set_tag_address_range(rv, size);
++#endif
++
+   return rv;
+ }
+ 
+@@ -394,6 +405,15 @@ inline ATTRIBUTE_ALWAYS_INLINE void ThreadCache::Deallocate(void* ptr, uint32 cl
+ 
+   uint32_t length = list->Push(ptr);
+ 
++#ifdef MTE_ENABLED
++  size_t cl_bytes = Static::sizemap()->ByteSizeForClass(cl);
++  //The pointer's tag cannot be trusted. You can do arithmetic on a pointer and the tag will not be updated.
++  ASSERT(MT_FETCH_TAG(ptr) == 0); //as passed down by upper calls
++  uintptr_t tag = MT_FETCH_TAG(mte_get_tag_address(ptr)); //get the Allocation tag. If MTE_HARDWARE is not enabled, then the tag will be 0.
++  fprintf(stderr, "[TagPool] Pointer %p clearing tag %lx (bytes=%lu)\n", ptr, tag, cl_bytes);
++  mte_clear_tag_address_range(ptr, cl_bytes);
++#endif
++
+   if (PREDICT_FALSE(length > list->max_length())) {
+     ListTooLong(list, cl);
+     return;
